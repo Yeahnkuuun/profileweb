@@ -29,7 +29,7 @@
                 const date = new Date();
                 const unix = Math.floor(date.getTime() / 1000);
                 const remaining = 1704034800 - unix;
-                const percent = Math.floor(remaining / 31536000 * 100);
+                const percent = 100 - Math.ceil(remaining / 31536000 * 100);
                 $('#percentage').text(percent);
                 $('#progressbar').val(percent);
             }, 1000);
