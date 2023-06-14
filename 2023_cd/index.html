@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <title>2023年終了タイマー</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin&family=Zen+Maru+Gothic:wght@500&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div align="center" style="margin-top: 25vh; font-family: 'Zen Maru Gothic', sans-serif;">
+            <h1 class="title is-2" style="font-family: 'Kaisei Tokumin', serif;">2023年終了進捗バー</h1>
+            <p>by <a href="https://twitter.com/yeahnmc">@yeahnmc</a></p>
+            <div id="nojs" class="notification box is-danger mt-3" style="width: 50vw">進捗バーを動かすことができません。<br>JavaScriptに対応したブラウザを使用してください。</div>
+            <div id="progressdiv" class="mt-6 box" style="width: 75vw; display: none;">
+                <h1 class="title is-4">2023年は既に<span id="percentage"> 取得中 </span>%終了しました。</h1>
+                <div align="left">
+                    <progress id="progressbar" class="progress is-large" max="100" value="0"></progress>
+                </div>
+            </div>
+        </div>
+        <script>
+            $("#nojs").hide();
+            $("#progressdiv").show();
+            setInterval(function() {
+                const date = new Date();
+                const unix = Math.floor(date.getTime() / 1000);
+                const remaining = 1704034800 - unix;
+                const percent = Math.floor(remaining / 31536000 * 100);
+                $('#percentage').text(percent);
+                $('#progressbar').val(percent);
+            }, 1000);
+        </script>
+    </body>
+</html>
